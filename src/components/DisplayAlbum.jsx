@@ -11,7 +11,7 @@ const DisplayAlbum = () => {
   return (
     <>
       <Navbar />
-      <div className="mt-4 flex flex-col md:flex-row gap-8 ">
+      <div className="mt-4 flex flex-col md:flex-row gap-8">
         <img src={album.image} alt="Album Cover" className="w-42 h-42 object-cover" />
         <div className="flex flex-col justify-end">
           <p>Playlist</p>
@@ -28,7 +28,7 @@ const DisplayAlbum = () => {
         </div>
       </div>
 
-      <div className="flex w-full justify-between mt-4 px-2 py-1 bg-[#121212] text-gray-400 text-sm">
+      <div className="flex w-full justify-between mt-4 px-2 py-1 text-gray-400 text-sm">
         <p className=""># Title</p>
         <p className="">Album</p>
         <p className="hidden sm:block">Date Added</p>
@@ -43,7 +43,7 @@ const DisplayAlbum = () => {
             <p className="text-white flex items-center gap-2">
               <b>{index + 1}</b>
               <img src={song.image} alt={`Image for ${song.name}`} className="inline w-8 mr-5" />
-              <p className="text-gray-400 text-sm">{song.name}</p>
+              <b className="text-gray-400 text-sm">{song.name}</b>
             </p>
 
             <p className="text-gray-400 text-sm text-center">{album.name}</p>
