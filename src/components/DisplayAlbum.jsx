@@ -2,23 +2,34 @@ import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import { albumsData, songsData, assets } from "../assets/assets";
 import { Clock } from "lucide-react";
+import { useContext } from "react";
+import { PlayerContext } from "../context/PlayerContext";
 
 const DisplayAlbum = () => {
   const id = useParams().id;
-  console.log(`Album ID: ${id}`);
   const album = albumsData[id];
+
+  const { playTrackId } = useContext(PlayerContext);
 
   return (
     <>
       <Navbar />
       <div className="mt-4 flex flex-col md:flex-row gap-8">
-        <img src={album.image} alt="Album Cover" className="w-42 h-42 object-cover" />
+        <img
+          src={album.image}
+          alt="Album Cover"
+          className="w-42 h-42 object-cover"
+        />
         <div className="flex flex-col justify-end">
           <p>Playlist</p>
           <h2 className="text-4xl font-bold mb-4 md:text-3xl">{album.name}</h2>
           <h4>{album.desc}</h4>
           <p className="mt-4 flex gap-2 items-center text-sm text-gray-400">
-            <img src={assets.spotify_logo} alt="Spotify Logo" className="w-4 h-4 inline-block " />
+            <img
+              src={assets.spotify_logo}
+              alt="Spotify Logo"
+              className="w-4 h-4 inline-block "
+            />
             <b>Spotify</b>
             {/* Add circle character before likes */}
             <span> •</span> 1,000,000 likes
@@ -39,16 +50,26 @@ const DisplayAlbum = () => {
 
       {songsData &&
         songsData.map((song, index) => (
-          <div className="grid grid-cols-3 items-center gap-2 py-1 hover:bg-[#ffffff26] cursor-pointer sm:grid-cols-4" key={index}>
+          <div
+            className="grid grid-cols-3 items-center gap-2 py-1 hover:bg-[#ffffff26] cursor-pointer sm:grid-cols-4"
+            key={index}
+            onClick={() => playTrackId(index)}
+          >
             <p className="text-white flex items-center gap-2">
               <b>{index + 1}</b>
-              <img src={song.image} alt={`Image for ${song.name}`} className="inline w-8 mr-5" />
+              <img
+                src={song.image}
+                alt={`Image for ${song.name}`}
+                className="inline w-8 mr-5"
+              />
               <b className="text-gray-400 text-sm">{song.name}</b>
             </p>
 
             <p className="text-gray-400 text-sm text-center">{album.name}</p>
 
-            <p className="text-gray-400 text-sm text-center hidden sm:block">4 days ago</p>
+            <p className="text-gray-400 text-sm text-center hidden sm:block">
+              4 days ago
+            </p>
 
             <p className="text-gray-400 text-sm text-end">{song.duration}</p>
           </div>
