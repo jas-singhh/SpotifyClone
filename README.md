@@ -15,11 +15,11 @@ A simple Spotify-inspired music player built with **React** and **Vite**, featur
 
 ### Home
 
-![Home](./home.png)
+![Home](./screenshots/home.png)
 
 ### Album
 
-![Album](./album.png)
+![Album](./screenshots/album.png)
 
 ## 🛠 Tech Stack
 
